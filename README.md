@@ -30,4 +30,4 @@ You need to create a header.md which has some directives such as author, title, 
 
 Then you can just run make and test.html will get generated. You can generate a pdf by running `make test.pdf` and you can create e-pub by running `make test.epub`.
 
-Please send me feed back and questions to nick at primordia dot com.
+Please send me feedback and questions to nick at primordia dot com.
