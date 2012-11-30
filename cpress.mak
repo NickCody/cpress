@@ -8,28 +8,40 @@ EPUBMDCSS_FILE  := $(CPRESS_DIR)epub-style.mdcss
 
 lorem_ipsum.html: lorem_ipsum.md
 
-%.base64: $(CPRESS_DIR)%.png $(CPRESS_DIR)cpress.mak
+#
+# Handy command to generate base64 encoded version of a png
+#
+$(CPRESS_DIR)images/%.base64: $(CPRESS_DIR)%.png $(CPRESS_DIR)cpress.mak
 	base64 $< | sed -e "s/.\{76\}/&~/g"  | tr '~' '\n' | tr -d ' ' > $@
 	#base64 $< $@
 
-%.html: %.md $(HEADER_FILE) $(NOVELMDCSS_FILE)
+%.html: %.md $(HEADER_FILE) $(NOVELMDCSS_FILE) $(CPRESS_DIR)cpress.mak
 	cat $(HEADER_FILE) > tmp
 	cat $(NOVELMDCSS_FILE) >> tmp
 	cat $< >> tmp
 	multimarkdown -o $@ tmp
 	rm -f tmp
 
-%.pdf: %.html
+%.pdf: %.html $(CPRESS_DIR)cpress.mak
 	wkhtmltopdf $(PDF_OPTS) $< $@
 
-$(CPRESS_DIR)%.mdcss: $(CPRESS_DIR)css/%.css
-	echo HTML Header: \<style type=\"text/css\" media=\"all\" \> > $@
-	cat $< | tr -d '\n' >> $@
-	echo \</style\> >> $@
+$(CPRESS_DIR)%.mdcss: $(CPRESS_DIR)css/%.css $(CPRESS_DIR)cpress.mak
+	echo HTML Header: \<style type=\"text/css\" media=\"all\" \> > tmp.mdcss
+	cat $< >> tmp.mdcss
+	echo \</style\> >> tmp.mdcss
+	cat tmp.mdcss | tr -d '\n' > $@
+	echo >> $@
+	rm -f tmp.mdcss
 
-%.epub: %.html
-	   ebook-convert $< $@ $(EPUB_OPTS)
 
+%.epub:  %.md $(HEADER_FILE) $(EPUBMDCSS_FILE) $(CPRESS_DIR)cpress.mak
+	cat $(HEADER_FILE) > tmp
+	cat $(EPUBMDCSS_FILE) >> tmp
+	cat $< >> tmp
+	multimarkdown -o tmp.html tmp
+	rm -f tmp
+	ebook-convert tmp.html $@ $(EPUB_OPTS)
+	rm -f tmp.html
 
 clean:
 	rm -f *.pdf
@@ -37,3 +49,4 @@ clean:
 	rm -f $(CPRESS_DIR)*.mdcss
 	rm -f *.epub
 	rm -f $(CPRESS_DIR)*.base64
+	rm -f $(CPRESS_DIR)images/*.base64
