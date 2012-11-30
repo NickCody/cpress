@@ -1,0 +1,18 @@
+# Files
+*.tex
+*.idx
+*.glo
+*.toc
+*.gz
+*.out
+*.log
+*.ist
+*.aux
+*.html
+*.mdcss
+*.pdf
+*.epub
+*.base64
+beamer/*
+letterhead/*
+.DS_Store
