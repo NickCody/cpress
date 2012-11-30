@@ -26,4 +26,8 @@ all: test.html
 include $(CPRESS_DIR)cpress.mak
 ```
 
-You need to create a header.md which has some directives such as author, title, etc. Set the location of this via `HEADER_FILE`. There is a sample file you can use as a template. You also need to define the relative path to the cpress.mak install from your Makfile via  `CPRESS_DIR `
+You need to create a header.md which has some directives such as author, title, etc. Set the location of this via `HEADER_FILE`. There is a sample file you can use as a template. You also need to define the relative path to the cpress.mak install from your Makfile via  `CPRESS_DIR `.
+
+Then you can just run make and test.html will get generated. You can generate a pdf by running `make test.pdf` and you can create e-pub by running `make test.epub`.
+
+Please send me feed back and questions to nick at primordia dot com.
