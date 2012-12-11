@@ -2,6 +2,7 @@
   * {-webkit-print-color-adjust: exact}
 }
 
+
 * {
   font-family: "Minion Pro", "Palatino", "Times New Roman";
   margin: 0;
@@ -341,5 +342,6 @@ BWZhm2TNda2Gee5nRJQwRAKw2D1ml/EzW7lkUce1VmoD1V1CqemSTi33M9Ww7q+q2IB9dSDPJZwK
   width: 0.33in;
   height: 0.33in;
   border: 0px;
+  page-break-inside:avoid;
   }
 
