@@ -1,0 +1,65 @@
+@media print {
+  * {-webkit-print-color-adjust: exact}
+}
+
+
+* {
+  font-family: "Minion Pro", "Palatino", "Times New Roman";
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 12pt;
+  color:#232323;
+  text-align: justify;
+  margin-bottom: 0.3em;
+  line-height: 150%;
+  hyphens: auto;
+}
+
+body {
+  width: 6in;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+h1, h2, h3 {
+  color:#444444;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 0.5in;
+  margin-bottom: 0.1em;
+  }
+
+h2 {
+  font-size: 0.3in;
+  margin-top: 1em;
+  margin-bottom: 0.1em;
+}
+
+h3 {
+  font-size: 0.2in;
+  font-style: italic;
+  margin-bottom: 0.4em;
+}
+
+hr {
+  border: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  border-bottom: 1px dashed #CCC;
+  background: #999;
+  margin-bottom: 1em;
+  width: 3in;
+}
+
+blockquote {
+    margin-top: 1em;
+    margin-left: 1em;
+    font-style: italic;
+    margin-bottom: 1em;
+}
