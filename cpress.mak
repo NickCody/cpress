@@ -3,8 +3,8 @@
 
 PDF_OPTS := --page-width 5.5in --page-height 8.5in --margin-top 0.25in --margin-bottom 0.25in --margin-left 0.25in --margin-right 0.25in --load-error-handling ignore
 EPUB_OPTS := --no-default-epub-cover --base-font-size 12 --keep-ligatures --margin-top 10.0 --margin-bottom 10.0 --margin-left 10.0 --margin-right 10.0 
-NOVELMDCSS_FILE := $(CPRESS_DIR)novel-style.mdcss
-EPUBMDCSS_FILE  := $(CPRESS_DIR)epub-style.mdcss
+NOVELMDCSS_FILE ?= $(CPRESS_DIR)novel-style.mdcss
+EPUBMDCSS_FILE  ?= $(CPRESS_DIR)epub-style.mdcss
 
 lorem_ipsum.html: lorem_ipsum.md
 
