@@ -13,7 +13,7 @@ p {
   font-size: 12pt;
   color:#232323;
   text-align: justify;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.75em;
   line-height: 150%;
   hyphens: auto;
 }
@@ -31,23 +31,24 @@ h1, h2, h3 {
 
 h1 {
   font-size: 0.5in;
-  margin-bottom: 0.1em;
+  margin-bottom: 1em;
   }
 
 h2 {
   font-size: 0.3in;
-  margin-top: 1em;
-  margin-bottom: 0.1em;
+  margin-top: 0.85em;
+  margin-bottom: 0.25em;
 }
 
 h3 {
   font-size: 0.2in;
   font-style: italic;
   margin-bottom: 0.4em;
+  margin-top: 0.8em;
 }
 
 hr {
-  border: 0;
+  border: 0;2
   margin-left: auto;
   margin-right: auto;
   margin-top: 1em;
@@ -58,8 +59,12 @@ hr {
 }
 
 blockquote {
-    margin-top: 1em;
-    margin-left: 1em;
-    font-style: italic;
-    margin-bottom: 1em;
+  margin-top: 1em;
+  margin-left: 1em; 
+  font-style: italic;
+  margin-bottom: 1em;
+}
+
+ul {
+  margin-left: 2em;
 }
