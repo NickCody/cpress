@@ -8,6 +8,7 @@ EPUBMDCSS_FILE  ?= $(CPRESS_DIR)epub-style.mdcss
 
 lorem_ipsum.html: lorem_ipsum.md
 
+
 #
 # Handy command to generate base64 encoded version of a png
 #
@@ -21,6 +22,8 @@ $(CPRESS_DIR)images/%.base64: $(CPRESS_DIR)%.png $(CPRESS_DIR)cpress.mak
 	cat $< >> tmp
 	multimarkdown -o $@ tmp
 	rm -f tmp
+	mkdir -p $(OUTPUT_DIR)
+	mv $@ $(OUTPUT_DIR)
 
 %.pdf: %.html $(CPRESS_DIR)cpress.mak
 	wkhtmltopdf $(PDF_OPTS) $< $@
@@ -33,7 +36,6 @@ $(CPRESS_DIR)%.mdcss: $(CPRESS_DIR)css/%.css $(CPRESS_DIR)cpress.mak
 	echo >> $@
 	rm -f tmp.mdcss
 
-
 %.epub:  %.md $(HEADER_FILE) $(EPUBMDCSS_FILE) $(CPRESS_DIR)cpress.mak
 	cat $(HEADER_FILE) > tmp
 	cat $(EPUBMDCSS_FILE) >> tmp
@@ -42,6 +44,8 @@ $(CPRESS_DIR)%.mdcss: $(CPRESS_DIR)css/%.css $(CPRESS_DIR)cpress.mak
 	rm -f tmp
 	ebook-convert tmp.html $@ $(EPUB_OPTS)
 	rm -f tmp.html
+	mkdir -p $(OUTPUT_DIR)
+	mv $@ $(OUTPUT_DIR)
 
 clean:
 	rm -f *.pdf
@@ -50,3 +54,4 @@ clean:
 	rm -f *.epub
 	rm -f $(CPRESS_DIR)*.base64
 	rm -f $(CPRESS_DIR)images/*.base64
+	rm -f $(OUTPUT_DIR)/*
